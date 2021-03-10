@@ -6,7 +6,10 @@ import PackageDescription
 let package = Package(
     name: "LoadingSystem",
     defaultLocalization: "en",
-    platforms: [SupportedPlatform.macOS(.v10_15)],
+    platforms: [
+        .macOS(.v10_15),
+        .iOS(.v11),
+    ],
     products: [
         .library(
             name: "LoadingSystem",
@@ -18,8 +21,7 @@ let package = Package(
     targets: [
         .target(
             name: "LoadingSystem",
-            dependencies: [],
-            resources: [.process("Resources")]
+            dependencies: []
         ),
         .testTarget(
             name: "LoadingSystemTests",
