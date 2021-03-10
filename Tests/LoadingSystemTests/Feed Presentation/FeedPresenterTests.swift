@@ -1,5 +1,6 @@
 
 
+import FeedSystem
 import LoadingSystem
 import XCTest
 
@@ -91,5 +92,5 @@ class FeedPresenterTests: XCTestCase {
     }
 }
 
-@testable import LoadingSystem
+@testable import FeedSystem
 private let moduleBundle = Bundle.module

@@ -23,10 +23,14 @@ let package = Package(
             name: "LoadingSystem",
             dependencies: []
         ),
-        .testTarget(
-            name: "LoadingSystemTests",
+        .target(
+            name: "FeedSystem",
             dependencies: ["LoadingSystem"],
             resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "LoadingSystemTests",
+            dependencies: ["LoadingSystem", "FeedSystem"]
         ),
     ]
 )

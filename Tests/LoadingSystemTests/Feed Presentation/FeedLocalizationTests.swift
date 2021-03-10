@@ -1,6 +1,6 @@
 
 
-@testable import LoadingSystem
+@testable import FeedSystem
 import XCTest
 
 final class FeedLocalizationTests: XCTestCase {

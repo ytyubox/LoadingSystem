@@ -7,6 +7,7 @@
  *		Running on macOS 10.15
  */
 
+import FeedSystem
 import LoadingSystem
 import XCTest
 
