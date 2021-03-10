@@ -27,7 +27,7 @@ extension LocalDataLoader: DataCache {
 extension LocalDataLoader: CancelableLoader {
     public typealias Output = Data
 
-//    public typealias LoadResult = DataLoader.Outcome
+
 
     public enum LoadError: Error {
         case failed
