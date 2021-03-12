@@ -9,7 +9,7 @@
 import Foundation
 import LoadingSystem
 public final class RemoteImageCommentLoader: CancelableLoaderOwner {
-    public typealias Output = [ImageComment]
+    public typealias CancelableOutput = [ImageComment]
 
     public let client: HTTPClient
     public let mapper: Mapper

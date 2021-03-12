@@ -5,16 +5,16 @@ public protocol CancellabelTask {
 }
 
 public protocol CancelableLoader {
-    associatedtype Output
-    typealias Outcome = Swift.Result<Output, Error>
+    associatedtype CancelableOutput
+    typealias Outcome = Swift.Result<CancelableOutput, Error>
     typealias Promise = (Outcome) -> Void
-    typealias Mapper = (Data, HTTPURLResponse) throws -> Output
+    typealias Mapper = (Data, HTTPURLResponse) throws -> CancelableOutput
 
     func load(from url: URL, completion: @escaping Promise) -> CancellabelTask
 }
 
 public protocol CancelableLoaderOwner: CancelableLoader {
-    var mapper: (Data, HTTPURLResponse) throws -> Output { get }
+    var mapper: (Data, HTTPURLResponse) throws -> CancelableOutput { get }
     var client: HTTPClient { get }
 }
 

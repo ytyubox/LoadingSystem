@@ -1,7 +1,7 @@
 import Foundation
 
 public final class RemoteDataLoader: CancelableLoaderOwner {
-    public typealias Output = Data
+    public typealias CancelableOutput = Data
     public let client: HTTPClient
     public let mapper: Mapper
     public init(client: HTTPClient,
