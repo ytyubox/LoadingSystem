@@ -17,6 +17,7 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/krzysztofzablocki/Difference.git", .branch("master"))
     ],
     targets: [
         .target(
@@ -30,7 +31,7 @@ let package = Package(
         ),
         .testTarget(
             name: "LoadingSystemTests",
-            dependencies: ["LoadingSystem", "FeedSystem"]
+            dependencies: ["LoadingSystem", "FeedSystem", "Difference"]
         ),
     ]
 )
