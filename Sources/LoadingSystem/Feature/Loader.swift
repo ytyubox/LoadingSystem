@@ -29,10 +29,10 @@ private final class LoaderBox<FeedLoaderType: Loader>: LoaderBaseBox<FeedLoaderT
     }
 }
 
-struct AnyLoader<Output>: Loader {
+public struct AnyLoader<Output>: Loader {
     private let box: LoaderBaseBox<Output>
 
-    init<F: Loader>(_ future: F) where Output == F.Output {
+    public init<F: Loader>(_ future: F) where Output == F.Output {
         if let earsed = future as? AnyLoader<Output> {
             box = earsed.box
         } else {
@@ -40,12 +40,12 @@ struct AnyLoader<Output>: Loader {
         }
     }
 
-    func load(completion: @escaping Promise) {
+    public func load(completion: @escaping Promise) {
         box.load(completion: completion)
     }
 }
 
-extension Loader {
+public extension Loader {
     func toAnyLoader() -> AnyLoader<Output> {
         AnyLoader(self)
     }
