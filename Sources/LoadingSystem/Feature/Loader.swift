@@ -10,14 +10,14 @@ public protocol Loader {
 
 public protocol ItemsLoader: Loader where Output: ExpressibleByArrayLiteral {}
 
-private class FeedLoaderBaseBox<Output: ExpressibleByArrayLiteral>: ItemsLoader {
+private class LoaderBaseBox<Output>: Loader {
     init() {}
     func load(completion _: @escaping Promise) {
         fatalError()
     }
 }
 
-private final class FeedLoaderBox<FeedLoaderType: ItemsLoader>: FeedLoaderBaseBox<FeedLoaderType.Output> {
+private final class LoaderBox<FeedLoaderType: ItemsLoader>: LoaderBaseBox<FeedLoaderType.Output> {
     let base: FeedLoaderType
     init(base: FeedLoaderType) {
         self.base = base
@@ -29,14 +29,14 @@ private final class FeedLoaderBox<FeedLoaderType: ItemsLoader>: FeedLoaderBaseBo
     }
 }
 
-struct AnyFeedLoader<Output: ExpressibleByArrayLiteral>: ItemsLoader {
-    private let box: FeedLoaderBaseBox<Output>
+struct AnyLoader<Output>: Loader {
+    private let box: LoaderBaseBox<Output>
 
     init<F: ItemsLoader>(_ future: F) where Output == F.Output {
-        if let earsed = future as? AnyFeedLoader<Output> {
+        if let earsed = future as? AnyLoader<Output> {
             box = earsed.box
         } else {
-            box = FeedLoaderBox(base: future)
+            box = LoaderBox(base: future)
         }
     }
 
