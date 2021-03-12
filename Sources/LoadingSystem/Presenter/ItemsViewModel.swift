@@ -12,6 +12,10 @@ import Foundation
 
 public struct ItemsViewModel<Item> {
     public let items: [Item]
+    
+    public init(items: [Item]) {
+        self.items = items
+    }
 }
 
 public struct LoadingViewModel {

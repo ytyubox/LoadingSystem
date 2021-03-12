@@ -6,7 +6,7 @@ import XCTest
 
 class FeedPresenterTests: XCTestCase {
     func test_title_isLocalized() {
-        XCTAssertEqual(FeedPresenter.title, localized("FEED_VIEW_TITLE"))
+        XCTAssertEqual(SUT.title, localized("FEED_VIEW_TITLE"))
     }
 
     func test_init_doesNotSendMessagesToView() {
@@ -50,8 +50,8 @@ class FeedPresenterTests: XCTestCase {
     }
 
     // MARK: - Helpers
-
-    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedPresenter, view: ViewSpy) {
+    private typealias SUT = FeedPresenter<ViewSpy>
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: SUT, view: ViewSpy) {
         let view = ViewSpy()
         let sut = FeedPresenter(feedView: view, loadingView: view, errorView: view)
         trackForMemoryLeaks(view, file: file, line: line)
@@ -70,6 +70,8 @@ class FeedPresenterTests: XCTestCase {
     }
 
     private class ViewSpy: FeedView, FeedLoadingView, FeedErrorView {
+      
+        
         enum Message: Hashable {
             case display(errorMessage: String?)
             case display(isLoading: Bool)

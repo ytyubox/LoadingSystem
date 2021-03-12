@@ -1,5 +1,2 @@
-
-
-public struct FeedLoadingViewModel {
-    public let isLoading: Bool
-}
+import LoadingSystem
+typealias FeedLoadingViewModel = LoadingViewModel
