@@ -93,6 +93,8 @@ class FeedImagePresenterTests: XCTestCase {
     private struct AnyImage: Equatable {}
 
     private class ViewSpy: FeedImageView {
+        typealias Image = AnyImage
+        
         private(set) var messages = [FeedImageViewModel<AnyImage>]()
 
         func display(_ model: FeedImageViewModel<AnyImage>) {
