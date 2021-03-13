@@ -32,7 +32,7 @@ extension LocalDataLoader: CancellableLoader {
         case notFound
     }
 
-    private final class LoadImageDataTask: CancellabelTask {
+    private final class LoadDataTask: CancellabelTask {
         private var completion: ((Outcome) -> Void)?
 
         init(_ completion: @escaping (Outcome) -> Void) {
@@ -53,7 +53,7 @@ extension LocalDataLoader: CancellableLoader {
     }
 
     public func load(from url: URL, completion: @escaping Promise) -> CancellabelTask {
-        let task = LoadImageDataTask(completion)
+        let task = LoadDataTask(completion)
         store.retrieve(dataForURL: url) { [weak self] result in
             guard self != nil else { return }
 

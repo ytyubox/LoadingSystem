@@ -35,12 +35,12 @@ open class UniversalPresenter<View: UniversalView, Input, Output> where View.Uni
         failureTransformer = FailureTransformer
     }
 
-    public func didStartLoadingImageData(for model: Input) {
+    public func didStartLoadingData(for model: Input) {
         let loading = loadingTransformer(model)
         view.display(loading)
     }
 
-    public func didFinishLoadingImageData(with data: Data, for model: Input) {
+    public func didFinishLoadingData(with data: Data, for model: Input) {
         do {
             let success = try successTransformer(model, data)
             view.display(success)
@@ -51,7 +51,7 @@ open class UniversalPresenter<View: UniversalView, Input, Output> where View.Uni
         }
     }
 
-    public func didFinishLoadingImageData(with error: Error, for model: Input) {
+    public func didFinishLoadingData(with error: Error, for model: Input) {
         let failure = failureTransformer(model, error)
         view.display(failure)
     }
