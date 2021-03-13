@@ -50,6 +50,7 @@ class FeedPresenterTests: XCTestCase {
     }
 
     // MARK: - Helpers
+
     private typealias SUT = FeedPresenter<ViewSpy>
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: SUT, view: ViewSpy) {
         let view = ViewSpy()
@@ -70,8 +71,6 @@ class FeedPresenterTests: XCTestCase {
     }
 
     private class ViewSpy: FeedView, FeedLoadingView, FeedErrorView {
-      
-        
         enum Message: Hashable {
             case display(errorMessage: String?)
             case display(isLoading: Bool)

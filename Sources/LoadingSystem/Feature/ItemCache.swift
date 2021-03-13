@@ -3,7 +3,7 @@ import Foundation
 public protocol ItemCache {
     typealias Result = Swift.Result<Void, Error>
     associatedtype Item
-    func save(_ feed: [Item], completion: @escaping (Result) -> Void)
+    func save(_ item: [Item], completion: @escaping (Result) -> Void)
 }
 
 public protocol AModel {

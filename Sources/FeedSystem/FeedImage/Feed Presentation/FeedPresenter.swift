@@ -4,9 +4,7 @@ public protocol FeedView: ItemsView where Item == FeedImage {}
 public typealias FeedLoadingView = LoadingView
 public typealias FeedErrorView = ErrorView
 
-
-public final class FeedPresenter<SuccessView: FeedView>: Presenter<FeedImage, SuccessView>  {
-    
+public final class FeedPresenter<SuccessView: FeedView>: Presenter<FeedImage, SuccessView> {
     private static var feedLoadError: String {
         return NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
                                  tableName: "Feed",
@@ -19,12 +17,10 @@ public final class FeedPresenter<SuccessView: FeedView>: Presenter<FeedImage, Su
                   loadingView: loadingView,
                   errorView: errorView,
                   errorMessageFactory: {
-                    _ in
-                    Self.feedLoadError
-                  }
-        )
+                      _ in
+                      Self.feedLoadError
+                  })
     }
-   
 
     public static var title: String {
         return NSLocalizedString("FEED_VIEW_TITLE",
@@ -34,14 +30,14 @@ public final class FeedPresenter<SuccessView: FeedView>: Presenter<FeedImage, Su
     }
 
     public func didStartLoadingFeed() {
-        self.didStartLoading()
+        didStartLoading()
     }
 
-    public  func didFinishLoadingFeed(with feed: [FeedImage]) {
-        self.didFinishLoading(with: feed)
+    public func didFinishLoadingFeed(with feed: [FeedImage]) {
+        didFinishLoading(with: feed)
     }
 
     public func didFinishLoadingFeed(with error: Error) {
-        self.didFinishLoading(with: error)
+        didFinishLoading(with: error)
     }
 }

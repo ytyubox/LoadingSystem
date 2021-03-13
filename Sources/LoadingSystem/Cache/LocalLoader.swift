@@ -20,13 +20,13 @@ extension LocalLoader: ItemCache where Output.ArrayLiteralElement: AModel, Outpu
     public typealias SaveResult = ItemCache.Result
     public typealias Item = Output.ArrayLiteralElement
 
-    public func save(_ feed: [Item], completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedFeed { [weak self] deletionResult in
+    public func save(_ items: [Item], completion: @escaping (SaveResult) -> Void) {
+        store.deleteCached { [weak self] deletionResult in
             guard let self = self else { return }
 
             switch deletionResult {
             case .success:
-                self.cache(feed, with: completion)
+                self.cache(items, with: completion)
 
             case let .failure(error):
                 completion(.failure(error))
@@ -44,7 +44,6 @@ extension LocalLoader: ItemCache where Output.ArrayLiteralElement: AModel, Outpu
 }
 
 extension LocalLoader: ItemsLoader {
-    //	public typealias LoadResult = FeedLoader.Result
     enum LocalError: Error {
         case noValue
     }
@@ -77,10 +76,10 @@ public extension LocalLoader {
 
             switch result {
             case .failure:
-                self.store.deleteCachedFeed(completion: completion)
+                self.store.deleteCached(completion: completion)
 
             case let .success(.some(cache)) where !cachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                self.store.deleteCachedFeed(completion: completion)
+                self.store.deleteCached(completion: completion)
 
             case .success:
                 completion(.success(()))

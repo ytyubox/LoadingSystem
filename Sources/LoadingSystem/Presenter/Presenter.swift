@@ -1,12 +1,11 @@
 //
-/* 
+/*
  *		Created by 游宗諭 in 2021/3/12
- *		
+ *
  *		Using Swift 5.0
- *		
+ *
  *		Running on macOS 11.2
  */
-
 
 import Foundation
 
@@ -23,26 +22,24 @@ public protocol ErrorView {
     func display(_ viewModel: ErrorViewModel)
 }
 
-open class Presenter<Item, DisplayView> where DisplayView:ItemsView, DisplayView.Item == Item {
+open class Presenter<Item, DisplayView> where DisplayView: ItemsView, DisplayView.Item == Item {
     private let itemsView: DisplayView
     private let loadingView: LoadingView
     private let errorView: ErrorView
     private let errorMessageFactory: (Error) -> String
 
-
     public init(itemsView: DisplayView,
                 loadingView: LoadingView,
                 errorView: ErrorView,
-                errorMessageFactory: @escaping (Error) -> String
-    ) {
+                errorMessageFactory: @escaping (Error) -> String)
+    {
         self.itemsView = itemsView
         self.loadingView = loadingView
         self.errorView = errorView
         self.errorMessageFactory = errorMessageFactory
     }
 
-
-     public func didStartLoading() {
+    public func didStartLoading() {
         errorView.display(.noError)
         loadingView.display(LoadingViewModel(isLoading: true))
     }

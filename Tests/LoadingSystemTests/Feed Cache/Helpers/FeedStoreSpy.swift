@@ -16,7 +16,7 @@ class FeedStoreSpy: Store {
     private var insertionCompletions = [InsertionCompletion]()
     private var retrievalCompletions = [RetrievalCompletion]()
 
-    func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+    func deleteCached(completion: @escaping DeletionCompletion) {
         deletionCompletions.append(completion)
         receivedMessages.append(.deleteCachedFeed)
     }
@@ -56,6 +56,6 @@ class FeedStoreSpy: Store {
     }
 
     func completeRetrieval(with feed: [LocalFeedImage], timestamp: Date, at index: Int = 0) {
-        retrievalCompletions[index](.success(CachedFeed(feed: feed, timestamp: timestamp)))
+        retrievalCompletions[index](.success(CachedItem(item: feed, timestamp: timestamp)))
     }
 }

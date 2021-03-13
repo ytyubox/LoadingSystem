@@ -24,8 +24,8 @@ extension LocalDataLoader: DataCache {
     }
 }
 
-extension LocalDataLoader: CancelableLoader {
-    public typealias CancelableOutput = Data
+extension LocalDataLoader: CancellableLoader {
+    public typealias CancellableOutput = Data
 
     public enum LoadError: Error {
         case failed

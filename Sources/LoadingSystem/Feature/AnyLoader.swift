@@ -1,15 +1,13 @@
 //
-/* 
+/*
  *		Created by 游宗諭 in 2021/3/12
- *		
+ *
  *		Using Swift 5.0
- *		
+ *
  *		Running on macOS 11.2
  */
 
-
 import Foundation
-
 
 private class LoaderBaseBox<Output>: Loader {
     init() {}
@@ -18,9 +16,9 @@ private class LoaderBaseBox<Output>: Loader {
     }
 }
 
-private final class LoaderBox<FeedLoaderType: Loader>: LoaderBaseBox<FeedLoaderType.Output> {
-    let base: FeedLoaderType
-    init(base: FeedLoaderType) {
+private final class LoaderBox<LoaderType: Loader>: LoaderBaseBox<LoaderType.Output> {
+    let base: LoaderType
+    init(base: LoaderType) {
         self.base = base
         super.init()
     }

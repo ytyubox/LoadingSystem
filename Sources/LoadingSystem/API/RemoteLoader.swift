@@ -11,8 +11,6 @@ open class RemoteLoader<Output: ExpressibleByArrayLiteral>: ItemsLoader {
     public typealias Mapper = (Data, HTTPURLResponse) throws -> Output
     public typealias Error = RemoteError
 
-    //	public typealias Result = FeedLoader.Result
-
     public init(url: URL, client: HTTPClient, mapper: @escaping Mapper) {
         self.url = url
         self.client = client

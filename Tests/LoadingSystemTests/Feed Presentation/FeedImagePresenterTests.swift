@@ -94,7 +94,7 @@ class FeedImagePresenterTests: XCTestCase {
 
     private class ViewSpy: FeedImageView {
         typealias Image = AnyImage
-        
+
         private(set) var messages = [FeedImageViewModel<AnyImage>]()
 
         func display(_ model: FeedImageViewModel<AnyImage>) {

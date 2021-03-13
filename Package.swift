@@ -17,7 +17,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/krzysztofzablocki/Difference.git", .branch("master"))
+        .package(url: "https://github.com/krzysztofzablocki/Difference.git", .branch("master")),
     ],
     targets: [
         .target(

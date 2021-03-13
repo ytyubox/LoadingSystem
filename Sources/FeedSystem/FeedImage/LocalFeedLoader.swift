@@ -12,7 +12,7 @@ public final class LocalFeedLoader<AStore: Store>: LocalLoader<[FeedImage], ASto
     public convenience init(store: AStore, currentDate: @escaping () -> Date) {
         self.init(store: store, currentDate: currentDate) {
             cache in
-            cache.feed.toModels()
+            cache.item.toModels()
         }
     }
 }
