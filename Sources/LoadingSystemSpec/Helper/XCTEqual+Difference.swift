@@ -8,7 +8,7 @@
  */
 
 #if canImport(XCTest)
-    import Difference
+    @_exported import Difference
     import XCTest
 
     public func XCTAssertEqual<T: Equatable>(_ expected: @autoclosure () throws -> T, _ received: @autoclosure () throws -> T, file: StaticString = #filePath, line: UInt = #line) {
