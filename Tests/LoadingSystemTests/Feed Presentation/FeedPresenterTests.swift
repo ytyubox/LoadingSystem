@@ -2,6 +2,7 @@
 
 import FeedSystem
 import LoadingSystem
+import LoadingSystemSpec
 import XCTest
 
 class FeedPresenterTests: XCTestCase {

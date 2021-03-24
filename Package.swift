@@ -15,6 +15,10 @@ let package = Package(
             name: "LoadingSystem",
             targets: ["LoadingSystem"]
         ),
+        .library(
+            name: "LoadingSystemSpec",
+            targets: ["LoadingSystemSpec"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/krzysztofzablocki/Difference.git", .branch("master")),
@@ -29,9 +33,14 @@ let package = Package(
             dependencies: ["LoadingSystem"],
             resources: [.process("Resources")]
         ),
+        .target(name: "LoadingSystemSpec"),
         .testTarget(
             name: "LoadingSystemTests",
-            dependencies: ["LoadingSystem", "FeedSystem", "Difference"]
+            dependencies: ["LoadingSystem", "FeedSystem", "Difference", "LoadingSystemSpec"]
+        ),
+        .testTarget(
+            name: "LoadingSystemSpecTests",
+            dependencies: ["LoadingSystemSpec", "LoadingSystem", "Difference"]
         ),
     ]
 )

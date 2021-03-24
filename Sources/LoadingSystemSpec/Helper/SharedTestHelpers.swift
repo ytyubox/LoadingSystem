@@ -1,22 +1,22 @@
 import Foundation
 
-func anyNSError() -> NSError {
+public func anyNSError() -> NSError {
     return NSError(domain: "any error", code: 0)
 }
 
-func anyURL() -> URL {
+public func anyURL() -> URL {
     return URL(string: "http://any-url.com")!
 }
 
-func anyData() -> Data {
+public func anyData() -> Data {
     return Data("any data".utf8)
 }
 
-func anyUUID() -> String {
+public func anyUUID() -> String {
     UUID().uuidString
 }
 
-func dateStringToDate(_ string: String) throws -> Date {
+public func dateStringToDate(_ string: String) throws -> Date {
     let jsonString =
         """
         	{ "date": "\(string)" }

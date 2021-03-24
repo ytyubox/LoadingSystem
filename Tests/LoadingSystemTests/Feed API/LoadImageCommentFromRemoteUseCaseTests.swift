@@ -9,6 +9,8 @@
 
 import FeedSystem
 import LoadingSystem
+
+import LoadingSystemSpec
 import XCTest
 
 class LoadImageCommentFromRemoteUseCaseTests: XCTestCase {
